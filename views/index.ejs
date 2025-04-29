@@ -8,9 +8,14 @@
             <a href="/items">Start Browsing</a>
         </div>
         <h2 class="featCardsTitle"> Featured Cards: </h2>
-        <div class="featuredCards1">
-            <img src="/images/DarkChar.jpg" alt="image">
-        </div>
+
+        <%if(items.length){
+            items.forEach(item =>{ %>
+                <div class="featuredCards">
+                    <img src="images/<%= item.image %>" alt="<%= item.title %>">
+                </div>
+            <%})
+        }%>
         <div class="featuredCards2">
             <img src="images/OneRing.jpg" alt="One Ring Card">
         </div>

@@ -50,7 +50,15 @@ app.use((req, res, next) =>{
 })
 
 app.get('/', (req, res) =>{
-    return res.render('index');
+    mongoose.connection.db.collection('items').find().toArray()
+        .then(items => {
+            console.log(items)
+            res.render('index', { items });
+        })
+        .catch(err => {
+            console.error('Error fetching items:', err);
+            res.status(500).send('Server Error');
+        });
 })
 
 app.use('/items', itemRoutes);

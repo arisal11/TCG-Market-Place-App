@@ -74,7 +74,7 @@ main{
     grid-template-rows: 400px 60px 200px;
     grid-template-areas: ". overview ."
                         ". title ."
-                        "featCard1 featCard2 featCard3";
+                        "featCards featCards featCards";
     gap: 10px;
     min-height: 100vh;
 }
@@ -114,30 +114,12 @@ main{
     grid-area: title;
 }
 
-.featuredCards1{
-    grid-area: featCard1;
+.featuredCards{
+    grid-area: featCards;
     text-align: center;
 }
 
-.featuredCards1 img{
-    max-width: 190px;
-}
-
-.featuredCards2{
-    grid-area: featCard2;
-    text-align: center;
-}
-
-.featuredCards2 img{
-    max-width: 190px;
-}
-
-.featuredCards3{
-    grid-area: featCard3;
-    text-align: center;
-}
-
-.featuredCards3 img{
+.featuredCards img{
     max-width: 190px;
 }
 
