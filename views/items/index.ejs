@@ -1,0 +1,26 @@
+<%- include('../partials/header.ejs')%>
+<main>
+    <div class = "imagesContainer">
+        <%if(items.length){ %>
+            <%items.forEach(item => {%>
+                <% if(item.active === true){ %>
+                <a href="/items/<%= item.id%>">
+                    <div class = "images">
+                        <img src="/images/<%= item.image%>" alt="<%= item.title%>">
+                        <h2>
+                            <%= item.title%>
+                        </h2>
+                        <p><%= item.condition%></p>
+                        <div class="bottomText">
+                            <p> $<%= item.price%>.00 </p>
+                            <p> Offers: <%=item.totalOffers%> </p>
+                        </div>
+                    </div>
+                </a>
+                <%} %>
+            <% });
+        }else{ %>
+            <p>There are no cards to display.</p>
+        <%}%>
+</main>
+<%- include('../partials/footer.ejs')%>

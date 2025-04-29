@@ -1,0 +1,41 @@
+<%- include('../partials/header.ejs')%>
+<main>  
+    <div class="contianer">
+        <div class="sell-container">
+            <h1>
+                Sell at Battle Binder
+            </h1>
+            <p>
+                Simply taking a picture with your phone and <br>
+                creating a listing in less than a minute!
+            </p>
+        </div>
+        <form action = '/items' method = 'POST' enctype="multipart/form-data" class="new-form">
+            <label for="cond">Condition</label>
+            <select name="condition" id="cond">
+                <option value="" disabled selected>Please Select A Condition</option>
+                <option value="New">New</option>
+                <option value="Like New">Like New</option>
+                <option value="Good">Good</option>
+                <option value="Used">Used</option>
+                <option value="Other">Other</option>
+            </select> 
+
+            <label for="title">Title</label>
+            <input type="text" id="title" name = "title">
+
+            <label for="price">Price</label>
+            <input type="number" id="price" name = "price">
+            
+            <label for="details">Details</label>
+            <textarea name="details" id="details"  minlength="20"></textarea>
+
+            <label for="file">Image</label>
+            <input type="file" name="image" id="file" >
+
+            <label for="submit"></label>
+            <input type="submit" id = "submit">
+        </form>
+    </div>
+</main>
+<%- include('../partials/footer.ejs')%>

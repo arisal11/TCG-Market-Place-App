@@ -1,0 +1,44 @@
+<%- include('../partials/header.ejs')%>
+<main>
+
+    <div class="item-container">
+        <img src="/images/<%= item.image%>" alt="<%= item.title%>">
+        <div class="info-container">
+            <h1>
+                <%= item.title%>
+            </h1>
+            <p>
+                <%= item.condition%>
+            </p>
+            <p>
+                $<%= item.price%>.00 | <%= item.totalOffers %>
+            </p>
+            <p>
+                Seller: <%= item.seller.firstName + ' ' + item.seller.lastName%>
+            </p>
+            <small>
+                <%= item.details%>
+            </small>
+
+            <%if(item.active === true){ %>
+                <form action="/items/<%= item.id%>" method='POST'>
+                    <input type="text" id="amount" name = "amount">
+                    <button type="submit"> Make an offer </button>
+                </form>
+                <% if(item.totalOffers !== 0){ %>
+                <small>
+                    <p>Current higest offer: $<%= item.highestOffer %></p>
+                </small>
+                <%} %>
+            <%}
+            else{ %>
+                <small>
+                    <p>
+                        Unfortunately this card is no longer for sale
+                    </p>
+                </small>
+            <% } %>
+        </div>
+    </div>
+</main>
+<%- include('../partials/footer.ejs')%>

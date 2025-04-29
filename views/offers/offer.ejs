@@ -1,0 +1,51 @@
+<%- include('../partials/header.ejs')%>
+<main>
+    <div class="contianer">
+        <div class="profile-container">
+                <h1> Offers for: <%= offers[0].itemId.title %></h1>
+            <table>
+                <tr> 
+                    <th>Buyer</th>
+                    <th>Amount</th>
+                    <% if(offers[0].itemId.active){ %>
+                        <th>Action</th>
+                    <% }
+                    else{ %>
+                        <th>Status</th>
+                    <% } %>
+                </tr>
+                    <%offers.forEach(offer =>{ %>
+                        <tr>
+                            <td>
+                                <p>
+                                    <%= offer.userId.firstName + ' ' + offer.userId.lastName%>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    $<%= offer.amount%>.00
+                                </p>
+                            </td>
+                            <% if(offer.itemId.active){ %>
+                            <td class="buttons">
+                                <form action="/items/<%= offer.itemId.id%>/offers" method="POST" >
+                                    <input type="hidden" name="offerId" value="<%= offer._id %>">
+                                    <button type="submit">Accept</button>
+                                </form>
+                            </td>
+                            <% }
+                            else{ %>
+                                <td>
+                                    <p>
+                                        <%= offer.status%>
+                                    </p>
+                                </td>
+                            <% } %>
+                        </tr>
+                    <%}) %>
+                </table>
+        </div>   
+    </div>
+</main>
+</div>
+<%- include('../partials/footer.ejs')%>
