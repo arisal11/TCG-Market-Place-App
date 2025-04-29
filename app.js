@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const itemRoutes = require('./routes/itemRoutes');
 const userRoutes = require('./routes/userRoutes');
 const offerRoutes = require('./routes/offerRoutes');
+const Item = require('./models/item')
 const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')
@@ -13,7 +14,7 @@ const app = express();
 
 let port = 3000;
 let host = 'localhost';
-const mongoUri = 'mongodb+srv://arisal:admin123@cluster0.e8bv8.mongodb.net/project5?retryWrites=true&w=majority&appName=Cluster0'
+const mongoUri = 'mongodb+srv://arisal:admin123@cluster0.e8bv8.mongodb.net/TCG-Database?retryWrites=true&w=majority&appName=Cluster0'
 
 app.set('view engine', 'ejs');
 
@@ -49,7 +50,7 @@ app.use((req, res, next) =>{
 })
 
 app.get('/', (req, res) =>{
-    res.render('index');
+    return res.render('index');
 })
 
 app.use('/items', itemRoutes);
