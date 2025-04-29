@@ -48,6 +48,7 @@ app.use((req, res, next) =>{
     res.locals.errorMessages = req.flash('error');
     next();
 })
+//lolfnbwejfnoefnioefnioewfioew
 
 app.get('/', (req, res) =>{
     mongoose.connection.db.collection('items').find().toArray()
