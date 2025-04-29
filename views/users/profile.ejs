@@ -1,0 +1,92 @@
+<%- include('../partials/header.ejs')%>
+
+<main>
+    <div class="contianer">
+
+        <div class="profile-container">
+            <h2>Welcome <%= user.firstName + " " + user.lastName%></h2>
+            <% if(items.length){ %>
+            <p>You have the following cards for sale</p>
+                <table>
+                    <tr> 
+                        <th>Card</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                        <%items.forEach(item =>{ %>
+                            <tr>
+                                <td>
+                                    <a href = '/items/<%= item.id%>'>
+                                        <p>
+                                            <%= item.title %>
+                                        </p>
+                                    </a>
+                                </td>
+                                <td>
+                                    <% if(item.active){ %>
+                                        <p>Active</p>
+                                    <% }else{ %>
+                                        <p>Sold</p>
+                                    <% } %>
+                                </td>
+                                <td class="buttons">
+                                    <form>
+                                        <% if(item.totalOffers === 0){ %>
+                                            <button type = "submit" formmethod = "GET" formaction = "/items/<%= item.id%>/edit">Edit</button>
+                                            <button type = "submit" formmethod = "POST" formaction = "/items/<%= item.id%>?_method=DELETE">Delete</button>
+                                            <button class = "disabled">View Offers</button>
+                                        <%}
+                                        else{ %>
+                                            <button type = "submit" formmethod = "GET" formaction = "/items/<%= item.id%>/edit">Edit</button>
+                                            <button type = "submit" formmethod = "POST" formaction = "/items/<%= item.id%>?_method=DELETE">Delete</button>
+                                            <button type = "submit" formmethod = "GET" formaction = "/items/<%= item.id%>/offers%>">View Offers</button>
+                                        <%} %>
+                                    </form>
+                                </td>
+                            </tr>
+                        <%}) %>
+                    </table>
+                <%}else{ %>
+                    <p>You have no cards for sale</p>
+                <%}%>    
+
+                <br>
+
+                <% if(offers.length){ %>
+                    <p>You have made the following offers</p>
+                    <table>
+                        <tr> 
+                            <th>Card</th>
+                            <th>Status</th>
+                            <th>Amount</th>
+                        </tr>
+                            <%offers.forEach(offer =>{ %>
+                                <tr>
+                                    <td>
+                                        <a href = '/items/<%= offer.itemId._id%>'>
+                                            <p>
+                                                <%= offer.itemId.title %>
+                                            </p>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <p>
+                                            <%= offer.status%>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p>
+                                            $<%= offer.amount%>.00
+                                        </p>
+                                    </td>
+                                </tr>
+                            <%}) %>
+                        </table>
+                    <%}else{ %>
+                        <p>You have not made any offers</p>
+                    <%}%>
+        </div>
+    </div>
+</main>
+
+<%- include('../partials/footer.ejs')%>
