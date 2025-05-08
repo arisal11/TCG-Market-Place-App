@@ -14,14 +14,13 @@ require('dotenv').config();
 const app = express();
 
 let port = process.env.PORT || 3000;
-let host = 'localhost';
 const mongoUri = process.env.MONGO_URI;
 
 app.set('view engine', 'ejs');
 
 mongoose.connect(mongoUri)
 .then(() =>{
-    app.listen(port, host, () =>{
+    app.listen(port, () =>{
         console.log('Server is running on', port);
     })
 })
