@@ -13,7 +13,7 @@ require('dotenv').config();
 
 const app = express();
 
-let port = 3001;
+let port = process.env.PORT || 3000;
 let host = 'localhost';
 const mongoUri = process.env.MONGO_URI;
 
