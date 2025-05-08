@@ -9,12 +9,13 @@ const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
+require('dotenv').config();
 
 const app = express();
 
 let port = 3001;
 let host = 'localhost';
-const mongoUri = 'mongodb+srv://arisal:admin123@cluster0.e8bv8.mongodb.net/TCG-Database?retryWrites=true&w=majority&appName=Cluster0'
+const mongoUri = process.env.MONGO_URI;
 
 app.set('view engine', 'ejs');
 
