@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary,
     params: {
-        folder: 'images',
+        folder: 'battlebinder',
         allowed_formats: ['jpg', 'png', 'jpeg']
     }
 });
