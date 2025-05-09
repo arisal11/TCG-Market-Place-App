@@ -12,7 +12,7 @@
         <%if(items.length){
             items.forEach(item =>{ %>
                 <div class="featuredCards">
-                    <img src="images/<%= item.image %>" alt="<%= item.title %>">
+                    <img src="<%= item.image %>" alt="<%= item.title %>">
                 </div>
             <%})
         }%>
