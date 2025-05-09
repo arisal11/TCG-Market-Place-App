@@ -12,7 +12,6 @@ const methodOverride = require('method-override');
 require('dotenv').config();
 
 const app = express();
-
 let port = process.env.PORT || 3000;
 const mongoUri = process.env.MONGO_URI;
 
