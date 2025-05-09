@@ -30,7 +30,7 @@ exports.create = (req, res, next) =>{
     let item = new model(req.body);
     item.seller = req.session.user
     if(req.file){
-        item.image = req.file.filename;
+        item.image = req.file.path;
     }
     item.save()
     .then((item) => {
