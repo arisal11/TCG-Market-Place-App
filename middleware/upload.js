@@ -1,6 +1,6 @@
 require('dotenv').config();
 const multer = require('multer');
-const {storage} = require('../middleware/cloudinary');
+const {cloudinary, storage} = require('../middleware/cloudinary');
 const path = require('path');
 const {validateId, validateItem, validateResult} = require('../middleware/validator.js');
 
