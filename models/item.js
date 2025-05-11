@@ -10,8 +10,7 @@ const itemSchema = new Schema({
         min: [0.01, 'minimum price is 0.01'], },
     details: {type: String, required: [true, 'details is required'], 
         minLength: [20, 'content should have atleast 20 characters']},
-    image: {type: String, required: [true, 'an image is required'],
-        match: [/^[\w-]+\.(jpeg|jpg|png)$/, 'Invalid image file format. Allowed formats: jpg, jpeg, png']},
+    image: {type: String, required: [true, 'an image is required']},
     active: {type: Boolean, default:true},
     totalOffers: {type: Number, default:0},
     highestOffer: {type: Number, default:0}

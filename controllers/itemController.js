@@ -45,6 +45,7 @@ exports.create = (req, res, next) =>{
         }
         next(err)
     });
+
 }
 
 exports.show = (req, res, next) =>{
@@ -96,7 +97,7 @@ exports.update = (req, res, next) =>{
         return next(err);
     }
     if(req.file){
-        item.image = req.file.filename
+        item.image = req.file.path;
     }
     model.findByIdAndUpdate(id, item, {useFindAndModify: false, runValidators: true})
     .then(item => {
