@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const itemRoutes = require('./routes/itemRoutes');
@@ -9,7 +10,6 @@ const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
-require('dotenv').config();
 
 const app = express();
 let port = process.env.PORT || 3000;
