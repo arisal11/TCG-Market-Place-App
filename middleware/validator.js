@@ -58,7 +58,7 @@ exports.validateResult = (req, res, next) =>{
         errors.array().forEach(error=>{
             req.flash('error', error.msg);
         })
-        return res.redirect('back');
+        res.redirect('back');
     }
-    next();
+    return next();
 }
