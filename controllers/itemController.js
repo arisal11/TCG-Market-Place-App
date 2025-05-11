@@ -32,6 +32,7 @@ exports.create = (req, res, next) =>{
     if(req.file){
         item.image = req.file.path;
     }
+    console.log(req.file);
     item.save()
     .then((item) => {
         req.flash('success', 'Successfully created an item')
