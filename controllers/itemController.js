@@ -42,6 +42,9 @@ exports.create = (req, res, next) =>{
         if(err.name === 'ValidationError'){
             err.status = 400;
         }
+        else{
+            err.status = 500;
+        }
         next(err)
     });
 

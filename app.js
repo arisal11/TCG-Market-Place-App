@@ -70,13 +70,19 @@ app.use((req, res, next) =>{
     next(err);
 })
 
-app.use((err, req, res, next) =>{
-    console.log(err.stack)
-    if(!err.status){
-        err.status = 500;
-        err.message = ("Internal Sever Error");
-    }
-    res.status(err.status);
-    res.render('error', {error: err});
-})
+app.use((err, req, res, next) => {
+    console.error('Error handler triggered:');
+    console.error(err.stack || err);
+
+    const status = typeof err.status === 'number' && err.status >= 100 && err.status < 600 ? err.status : 500;
+    const message = err.message || 'Internal Server Error';
+
+    res.status(status).render('error', {
+        error: {
+            status,
+            message,
+            stack: process.env.NODE_ENV === 'development' ? err.stack : ''
+        }
+    });
+});
 

@@ -59,7 +59,6 @@ exports.validateResult = (req, res, next) =>{
             req.flash('error', error.msg);
         })
         return res.redirect('back');
-    }else{
-        return next();
     }
+    next();
 }
