@@ -115,12 +115,18 @@ main{
 }
 
 .featuredCards{
-    grid-area: featCards;
     text-align: center;
 }
 
 .featuredCards img{
     max-width: 190px;
+}
+
+.flexboxImage{
+    grid-area: featCards;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 /*Item-Style*/
