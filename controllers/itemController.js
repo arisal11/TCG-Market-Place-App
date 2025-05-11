@@ -35,11 +35,10 @@ exports.create = (req, res, next) =>{
     item.save()
     .then((item) => {
         req.flash('success', 'Successfully created an item')
-            req.session.save(() =>{
-                res.redirect('/items')
-            })
+                res.redirect('/items');
     })
     .catch(err => {
+        console.log(err);
         if(err.name === 'ValidationError'){
             err.status = 400;
         }
